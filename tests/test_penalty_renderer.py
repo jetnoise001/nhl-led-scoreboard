@@ -79,6 +79,8 @@ def parse_args():
                         default=2, type=int)
     parser.add_argument("--severity", action="store", help="Penalty severity (MINOR, MAJOR, MISCONDUCT). (Default: MINOR)",
                         default="MINOR", type=str, choices=["MINOR", "MAJOR", "MISCONDUCT", "MATCH"])
+    parser.add_argument("--penalty-type", action="store", help="Penalty type (e.g., HOOKING, CROSS-CHECK, TRIPPING). (Default: HOOKING)",
+                        default="HOOKING", type=str)
 
     # Test flags (for ScoreboardConfig compatibility)
     parser.add_argument("--testScChampions", action="store", help="Test stanley cup champions board",
@@ -135,6 +137,7 @@ def create_mock_penalty(args, team_id):
     penalty.periodTime = args.period_time
     penalty.penaltyMinutes = args.penalty_minutes
     penalty.severity = args.severity
+    penalty.type = args.penalty_type
     penalty.player = {
         "sweaterNumber": args.player_number,
         "lastName": {"default": args.player_last}
@@ -172,7 +175,7 @@ def main():
     print(f"Driver mode: {driver.mode.name}")
     print(f"Team: {commandArgs.team}")
     print(f"Player: #{commandArgs.player_number} {commandArgs.player_last}")
-    print(f"Penalty: {commandArgs.penalty_minutes} min {commandArgs.severity} @ {commandArgs.period_time}")
+    print(f"Penalty: {commandArgs.penalty_minutes} min {commandArgs.severity} ({commandArgs.penalty_type}) @ {commandArgs.period_time}")
     print("=" * 60)
 
     # Get team ID - use provided team_id, or look up from abbreviation
@@ -248,6 +251,7 @@ def main():
         print("  - Penalty time")
         print("  - Team abbreviation with team colors")
         print("  - Player number and last name")
+        print("  - Penalty type")
         print("  - Penalty duration and severity")
 
     except Exception as e:

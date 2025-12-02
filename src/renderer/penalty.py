@@ -24,6 +24,7 @@ class PenaltyRenderer:
         self.periodTime = penalty_details.periodTime
         self.penaltyMinutes = penalty_details.penaltyMinutes # TODO: I don't know if we have this
         self.severity = penalty_details.severity
+        self.penalty_type = penalty_details.type
         self.rotation_rate = 10
         self.disable_animation = data.config.disable_penalty_animation
         self.matrix = matrix
@@ -73,8 +74,6 @@ class PenaltyRenderer:
             for frame_num in range(max_frames):
                 debug.debug("Playing frame {} of {}".format(frame_num, max_frames))
 
-                self.matrix.clear()
-
                 # Convert frame to RGBA if needed
                 frame = toaster.convert('RGBA')
 
@@ -85,11 +84,12 @@ class PenaltyRenderer:
                 # Flip the frame horizontally
                 frame = frame.transpose(Image.FLIP_LEFT_RIGHT)
 
-                # Draw the current frame
+                # Draw the current frame on top of penalty details
                 self.matrix.draw_image(("75%", "25%"), frame, "center")
 
-                # Draw penalty details on top of the frame
+                # Redraw penalty details each frame to ensure they stay visible
                 self.draw_penalty()
+                
                 self.matrix.render()
 
                 # Wait for the appropriate frame duration
@@ -140,7 +140,11 @@ class PenaltyRenderer:
         )
         self.matrix.draw_text_layout(
             self.layout.minutes,
-            "{}:00".format(self.penaltyMinutes),
+            "{}:00 ".format(self.penaltyMinutes),
+        )
+        self.matrix.draw_text_layout(
+            self.layout.penalty_type,
+            self.penalty_type,
         )
         self.matrix.draw_text_layout(
             self.layout.severity,

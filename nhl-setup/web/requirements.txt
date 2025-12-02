@@ -1,0 +1,4 @@
+flask
+richcolorlog
+toml
+paho-mqtt
