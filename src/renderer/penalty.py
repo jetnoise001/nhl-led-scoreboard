@@ -25,7 +25,13 @@ class PenaltyRenderer:
         self.penaltyMinutes = penalty_details.penaltyMinutes # TODO: I don't know if we have this
         self.severity = penalty_details.severity
         # penalty 'type' may be provided by the penalty object (e.g. TRIPPING, SLASHING)
-        self.penalty_type = getattr(penalty_details, 'type', None)
+        # self.penalty_type = getattr(penalty_details, 'type', None) # old line, but works during testing, not with API
+
+        self.penalty_type = (
+            getattr(penalty_details, "penaltyType", None)
+            or getattr(penalty_details, "type", None) # try both keys for compatibility
+        )
+
         self.rotation_rate = 10
         self.disable_animation = data.config.disable_penalty_animation
         self.matrix = matrix

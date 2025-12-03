@@ -140,6 +140,10 @@ def create_mock_penalty(args, team_id):
     penalty.penaltyMinutes = args.penalty_minutes
     penalty.severity = args.severity
     penalty.type = args.penalty_type
+    
+    # Added this line for the penalty type
+    penalty.penaltyType = args.penalty_type
+
     penalty.player = {
         "sweaterNumber": args.player_number,
         "lastName": {"default": args.player_last}
