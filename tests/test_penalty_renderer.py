@@ -79,8 +79,10 @@ def parse_args():
                         default=2, type=int)
     parser.add_argument("--severity", action="store", help="Penalty severity (MINOR, MAJOR, MISCONDUCT). (Default: MINOR)",
                         default="MINOR", type=str, choices=["MINOR", "MAJOR", "MISCONDUCT", "MATCH"])
-    parser.add_argument("--penalty-type", action="store", help="Penalty type (e.g., HOOKING, CROSS-CHECK, TRIPPING). (Default: HOOKING)",
-                        default="HOOKING", type=str)
+
+    parser.add_argument("--penalty-type", action="store",
+                        help="Penalty type (e.g., TRIPPING, SLASHING). (Default: TRIPPING)",
+                        default="TRIPPING", type=str)
 
     # Test flags (for ScoreboardConfig compatibility)
     parser.add_argument("--testScChampions", action="store", help="Test stanley cup champions board",
@@ -205,7 +207,9 @@ def main():
     penalty_team = create_mock_team(commandArgs, team_id)
     print(f"✓ Created mock team: {penalty_team.abbrev}")
     print(f"  - Penalty on #{penalty_team.penalties[-1].player['sweaterNumber']} "
-          f"{penalty_team.penalties[-1].player['lastName']['default']}")
+          f"{penalty_team.penalties[-1].player['lastName']['default']} -- "
+          f"{penalty_team.penalties[-1].penaltyMinutes}min {penalty_team.penalties[-1].severity} "
+          f"({penalty_team.penalties[-1].type})")
 
     # Create teams_info dictionary with TeamInfo for the penalty team
     team_info = create_mock_team_info(commandArgs, team_id)
@@ -251,8 +255,8 @@ def main():
         print("  - Penalty time")
         print("  - Team abbreviation with team colors")
         print("  - Player number and last name")
-        print("  - Penalty type")
         print("  - Penalty duration and severity")
+        print("  - Penalty type")
 
     except Exception as e:
         print(f"✗ Failed to render penalty: {e}")

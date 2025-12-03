@@ -128,7 +128,7 @@
       }
     },
     "scorer_number": {
-      "position": [12,0],
+      "position": [12,2],
       "font": "large",
       "relative": {
         "to": "header",
@@ -136,14 +136,14 @@
       }
     },
     "badge": {
-      "position": [-12,2],
+      "position": [-12,14],
       "relative":{
         "to": "scorer_number",
-        "align": "left-bottom"
+        "align": "left-center"
       }
     },
     "scorer_first_name": {
-      "position": [2,0],
+      "position": [2,2],
       "relative":{
         "to": "badge",
         "align": "right-top"
@@ -163,27 +163,28 @@
       "align":"left"
     },
     "scorer_last_name": {
-      "position": [0,3],
+      "position": [0,2],
       "relative":{
         "to": "header",
         "align": "left-bottom"
       }
     },
     "assists_header": {
-      "position": [0,3],
+      "position": [0,2],
+      "font": "medium_2",
       "relative":{
         "to": "scorer_last_name",
         "align": "left-bottom"
       }
     },
     "assist1_last_name": {
-      "position": [0, 3],
+      "position": [0, 2],
       "relative":{
         "to": "assists_header",
         "align": "left-bottom"
       }
     },"assist2_last_name": {
-      "position": [0, 3],
+      "position": [0, 2],
       "relative":{
         "to": "assist1_last_name",
         "align": "left-bottom"
@@ -234,21 +235,20 @@
         "align": "bottom"
       } 
     },
-    "penalty_type":{
-      "position": [0, 14],
-      "relative": {
-        "to": "minutes",
-        "align": "bottom"
-      } 
-    },
     "severity":{
       "position": [2, 0],
       "relative": {
         "to": "minutes",
         "align": "right"
       } 
+    },
+    "penalty_type":{
+      "position": [0, 14],
+      "relative": {
+        "to": "minutes",
+        "align": "bottom"
+      }
     }
-    
   },
   
   "scoreticker": {

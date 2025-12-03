@@ -117,18 +117,18 @@
       }
     },
     "scorer_number": {
-      "position": [1,2],
+      "position": [12,2],
       "relative": {
         "to": "header",
         "align":"left-bottom"
       },
-      "font":"large"
+      "font":"medium_2"
     },
     "badge": {
-      "position": [0,11],
+      "position": [-12,11],
       "relative":{
         "to": "scorer_number",
-        "align": "left-bottom"
+        "align": "left"
       }
     },
     "scorer_first_name": {
@@ -205,24 +205,17 @@
     },
 
     "last_name":{
-      "position": [0, 10],
+      "position": [0, 7],
       "relative": {
         "to": "team_name",
         "align": "bottom"
       } 
     },
     "minutes":{
-      "position": [0, 10],
+      "position": [0, 6],
       "font": "medium_2",
       "relative": {
         "to": "last_name",
-        "align": "bottom"
-      } 
-    },
-    "penalty_type":{
-      "position": [0, 10],
-      "relative": {
-        "to": "minutes",
         "align": "bottom"
       } 
     },

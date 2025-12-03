@@ -106,24 +106,24 @@
     },
 
     "last_name":{
-      "position": [0, 14],
+      "position": [0, 7],
       "relative": {
         "to": "team_name",
-        "align": "bottom"
-      } 
-    },
-    "minutes":{
-      "position": [0, 12],
-      "font": "medium_2",
-      "relative": {
-        "to": "last_name",
         "align": "bottom"
       } 
     },
     "penalty_type":{
       "position": [0, 14],
       "relative": {
-        "to": "minutes",
+        "to": "last_name",
+        "align": "bottom"
+      }
+    },
+    "minutes":{
+      "position": [0, 6],
+      "font": "medium_2",
+      "relative": {
+        "to": "last_name",
         "align": "bottom"
       } 
     },
